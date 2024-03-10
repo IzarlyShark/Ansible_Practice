@@ -31,11 +31,16 @@
       become: yes
 
 
+     - name: Copy Nginx config file in sites-enabled
+      copy:
+        src: config_file/ansible.iphilka.ru.conf
+        dest: /etc/nginx/sites-enabled/
+      become: yes
 
     - name: Create symbol link in sites-enabled
       file:
-        src: ~/opt/homebrew/etc/nginx/sites-available/ansible.iphilka.ru.conf
-        dest: ~/opt/homebrew/etc/nginx/sites-enabled/ansible.iphilka.ru.conf
+        src: /etc/nginx/sites-available/ansible.iphilka.ru.conf
+        dest: /etc/nginx/sites-enabled/ansible.iphilka.ru.conf
         state: link
       become: yes
 
