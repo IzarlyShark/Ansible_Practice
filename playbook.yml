@@ -6,6 +6,7 @@
       user:
         name: ansible-worker
         state: present
+        
     - name: Install git
       apt:
         name: git
@@ -14,8 +15,8 @@
     - name: Copy SSH keys
       copy:
         src: ssh_keys/
-        dest: /Users/evgenyportnov/Desktop/ansible-worker/.ssh/
-        mode: 0600
+        dest: /Users/evgenyportnov/Desktop/ansible-worker/.ssh/ 
+        mode: 777
       ignore_errors: no
 
     - name: Install Nginx
@@ -28,21 +29,12 @@
       copy:
         src: config_file/ansible.iphilka.ru.conf
         dest: /etc/nginx/sites-available/
-      become: yes
-
-
-     - name: Copy Nginx config file in sites-enabled
-      copy:
-        src: config_file/ansible.iphilka.ru.conf
-        dest: /etc/nginx/sites-enabled/
-      become: yes
-
     - name: Create symbol link in sites-enabled
       file:
         src: /etc/nginx/sites-available/ansible.iphilka.ru.conf
         dest: /etc/nginx/sites-enabled/ansible.iphilka.ru.conf
         state: link
-      become: yes
+        
 
 
     
