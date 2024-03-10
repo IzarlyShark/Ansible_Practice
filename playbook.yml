@@ -6,3 +6,15 @@
       user:
         name: ansible-worker
         state: present
+    - name: Install git
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Copy SSH keys
+      copy:
+        src: ssh_keys/
+        dest: /Users/evgenyportnov/Desktop/ansible-worker/.ssh/
+        mode: 0600
+      ignore_errors: no
+      
