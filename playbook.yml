@@ -17,4 +17,4 @@
         dest: /Users/evgenyportnov/Desktop/ansible-worker/.ssh/
         mode: 0600
       ignore_errors: no
-      
+    
